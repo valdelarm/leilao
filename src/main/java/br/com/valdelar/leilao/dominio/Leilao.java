@@ -1,4 +1,4 @@
-package br.com.valdelar.unit.dominio;
+package br.com.valdelar.leilao.dominio;
 
 import java.util.ArrayList;
 import java.util.Collections;

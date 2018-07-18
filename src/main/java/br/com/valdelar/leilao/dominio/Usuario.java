@@ -1,4 +1,4 @@
-package br.com.valdelar.unit.dominio;
+package br.com.valdelar.leilao.dominio;
 
 public class Usuario {
     private int id;
