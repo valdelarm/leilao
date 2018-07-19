@@ -3,9 +3,7 @@ package br.com.valdelar.leilao.servico;
 import br.com.valdelar.leilao.dominio.Lance;
 import br.com.valdelar.leilao.dominio.Leilao;
 import br.com.valdelar.leilao.dominio.Usuario;
-import br.com.valdelar.leilao.servico.Avaliador;
 import static org.junit.Assert.*;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
@@ -103,5 +101,20 @@ public class AvaliadorTest {
         List<Lance> maiores = leiloeiro.getMaiores();
 
         assertEquals(2, maiores.size());
+    }
+
+    @Test
+    public void verificaLanceUnico() {
+        Usuario joao = new Usuario("João");
+
+        Leilao leilao = new Leilao("Playstation 4");
+
+        leilao.propoe(new Lance(joao, 200.0));
+
+        Avaliador leiloeiro = new Avaliador();
+        leiloeiro.avalia(leilao);
+
+        assertEquals(200.0, leiloeiro.getMaiorLance(), 0.00001);
+        assertEquals(200.0, leiloeiro.getMenorLance(), 0.00001);
     }
 }
