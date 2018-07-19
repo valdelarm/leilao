@@ -11,8 +11,8 @@ public class AvaliadorTest {
 
     @Test
     public void verificarLancesEmOrdemCrescente() {
-        Usuario joao = new Usuario("João");
-        Usuario jose = new Usuario("José");
+        Usuario joao = new Usuario("Joao");
+        Usuario jose = new Usuario("Jose");
         Usuario maria = new Usuario("Maria");
 
         Leilao leilao = new Leilao("Casa");
@@ -28,5 +28,38 @@ public class AvaliadorTest {
 
         Assert.assertEquals(maiorEsperado, leiloeiro.getMaiorLance(), 0.0001);
         Assert.assertEquals(menorEsperado, leiloeiro.getMenorLance(), 0.0001);
+    }
+
+    @Test
+    public void verificaMediaDosLances(){
+        Usuario joao = new Usuario("Joao");
+        Usuario jose = new Usuario("Jose");
+        Usuario maria = new Usuario("Maria");
+
+        Leilao leilao = new Leilao("Casa");
+        leilao.propoe(new Lance(joao, 200.0));
+        leilao.propoe(new Lance(jose, 300.0));
+        leilao.propoe(new Lance(maria, 400.0));
+
+        Avaliador leiloeiro = new Avaliador();
+        leiloeiro.media(leilao);
+
+        Double mediaEsperada = 300.0;
+
+        Assert.assertEquals(mediaEsperada, leiloeiro.getMedia());
+    }
+
+    @Test
+    public void verificaMediaDosLancesZero(){
+        Usuario joao = new Usuario("Joao");
+
+        Leilao leilao = new Leilao("Casa");
+
+        Avaliador leiloeiro = new Avaliador();
+        leiloeiro.media(leilao);
+
+        Double mediaEsperada = 0.0;
+
+        Assert.assertEquals(mediaEsperada, leiloeiro.getMedia());
     }
 }
