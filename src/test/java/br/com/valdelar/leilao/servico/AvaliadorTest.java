@@ -83,6 +83,9 @@ public class AvaliadorTest {
         List<Lance> maiores = leiloeiro.getMaiores();
 
         assertEquals(3, maiores.size());
+        assertEquals(400.0, maiores.get(0).getValor(), 0.00001);
+        assertEquals(300.0, maiores.get(1).getValor(), 0.00001);
+        assertEquals(200.0, maiores.get(2).getValor(), 0.00001);
     }
 
     @Test
